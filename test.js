@@ -7,18 +7,18 @@ var worker = child_process.fork('./worker.js', { env: { TASK_ROOT: cwd, PATH: cu
 worker.on('message', function(m) {
 	if(m.error !== undefined) {
 			console.log('Error occured!');
-			console.log(JSON.stringify(m));	    
+			console.log(JSON.stringify(m));
 	} else {
 	    console.log('Done');
 			console.log(JSON.stringify(m));
-	} 
+	}
   worker.kill();
 });
 
 worker.send({
   dsm: {
-    bucket: 'kespry-files',
-    key: 'images/2300/products/dsm.tif'
+    bucket: 'aeroscan-dev',
+    key: 'orthomosaics/data/62c/466/a9-/original/ortho.tif'
   },
   zoom: '18-22'
 });

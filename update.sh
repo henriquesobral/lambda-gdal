@@ -21,6 +21,6 @@ zip -r9 ~/lambda/bundle.zip *
 cd $VIRTUAL_ENV/lib/python2.7/site-packages
 zip -r9 ~/lambda/bundle.zip *
 cd ~/lambda
-aws s3 cp ./bundle.zip s3://lambda-drone --acl public-read
-aws lambda update-function-code --function-name tileTest --s3-bucket lambda-drone --s3-key bundle.zip --publish
-aws lambda invoke --invocation-type Event --function-name tileTest --region us-west-2 --payload file:///home/ec2-user/lambda/test-event.json --profile default outputfile.txt
+aws s3 cp ./bundle.zip s3://aeroscan-dev --acl public-read
+aws lambda update-function-code --function-name tileTest --s3-bucket aeroscan-dev --s3-key bundle.zip --publish
+aws lambda invoke --invocation-type Event --function-name tileTest --region us-east-1 --payload file:///users/hsobral/projects/aeroscan/tools/lambda-gdal/test-event.json --profile default outputfile.txt

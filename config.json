@@ -6,20 +6,20 @@
     "access": "",
     "secret": "",
     "code": {
-      "bucket": "lambda-drone",
+      "bucket": "aeroscan-dev",
       "key": "bundle.zip"
     }
   },
   "lambda": {
     "params": {
-      "Role": "arn:aws:iam::736460024992:role/lambdaUser",
+      "Role": "arn:aws:iam::163657500900:role/service-role/lambdaRole",
       "FunctionName": "tileTest",
       "memorySize": 1024,
       "timeout": 600,
       "description": "Creates heightmap tiles from elevation DSM"
     },
     "opts": {
-      "region": "us-west-2",
+      "region": "us-east-1",
       "profile": "default"
     }
   }

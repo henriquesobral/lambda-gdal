@@ -5,7 +5,7 @@ var child_process = require('child_process'),
 exports.tile = function(event, context) {
   console.log('started tile!!');
   console.log('current path is', cwd);
-  console.log(path.resolve(cwd, 'local', 'lib'));    
+  console.log(path.resolve(cwd, 'local', 'lib'));
   var rootPath = process.env['LAMBDA_TASK_ROOT'] || cwd;
   console.log("root path", rootPath);
   var currentPath = process.env['PATH'];
@@ -15,7 +15,7 @@ exports.tile = function(event, context) {
   worker.on('message', function(m) {
     console.log('got message!');
     console.log(JSON.stringify(m));
-    
+
     if(m.error !== undefined) {
       context.fail(m);
       worker.kill();
@@ -24,12 +24,12 @@ exports.tile = function(event, context) {
       context.succeed(m);
       worker.kill();
       context.done();
-    } 
+    }
   });
-  
+
   worker.send({
     dsm: {
-      bucket: 'kespry-files',
+      bucket: 'aeroscan-dev',
       key: 'images/2300/products/dsm.tif'
     },
     zoom: '18-22'
